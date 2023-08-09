@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+
+  <title>PROJECT MANAGEMENT TOOL</title>
+</head>
+
+<body>
+  <div class="card" style="padding: 1rem;">
+    <h1>PROJECT MANAGEMENT TOOL</h1>
+  </div>
+
+  <div class="container-wrapper">
+
+    <div class="card">
+      <div style="display: flex;justify-content: space-between;width: 100%; align-items: center;">
+
+        <div>
+          <div class="form-group">
+            <h4>Users</h4>
+            <button id="addUser">Add User</button>
+            <div class="user-list">
+              <div id="userChips"></div>
+            </div>
+          </div>
+
+          <h4>Tasks</h4>
+          <div class="row" style="margin-bottom: 50px">
+            <div class="col-md-12">
+              <button onclick="openTaskModal('add')">Add Task</button>
+
+            </div>
+          </div>
+        </div>
+        <button onclick="openChatModal()">
+          Chat
+        </button>
+
+        <img src="productivity.jpg" alt="Your Image" width="300">
+
+
+      </div>
+
+
+
+      <div class="task-table">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Task</th>
+              <th>Status</th>
+              <th>Is Started</th>
+              <th>Duration</th>
+            </tr>
+          </thead>
+          <tbody id="taskTableBody"></tbody>
+        </table>
+      </div>
+
+      <!--Chatbox Modal-->
+      <div id="chatModal" class="new-modal">
+        <div class="new-modal-content" style="width: 50%; height: 50vh;">
+          <span class="close" onclick="closeChatModal()">&times;</span>
+          <div style="display: flex;">
+
+            <div style="width: 40%;">
+              <label for="recipientSelect">Select recipient:</label>
+              <select id="recipientSelect" style="margin-bottom: 1rem;">
+                <option value="">Select a user</option>
+              </select>
+              <label for="messageInput">Message:</label>
+              <textarea id="messageInput" rows="4" placeholder="Type your message here"></textarea>
+              <button id="sendButton" style="margin-top: 1rem;" onclick="sendMessage()">Send</button>
+
+            </div>
+            <div style="display: flex;align-items: center;width: 100%;flex-direction: column;">
+              <p>Message History</p>
+              <ul id="messageList"></ul> <!-- Add this line for displaying messages -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!--  Add User modal -->
+    <div id="myModal" class="new-modal">
+      <div class="new-modal-content">
+        <div style="display: flex; justify-content: space-between;">
+
+          <h2>Add User</h2>
+          <span id="close" style="font-size: 1rem;cursor: pointer;">X</span>
+        </div>
+        <input type="text" id="modalUserInput" placeholder="Enter a new user">
+        <button id="saveUser">Save</button>
+      </div>
+    </div>
+
+
+    <!-- Task Modal -->
+    <div id="taskModal" class="new-modal">
+      <div class="new-modal-content">
+        <span class="close" onclick="closeTaskModal()">&times;</span>
+        <label for="userSelect">Select a user:</label>
+        <select id="userSelect">
+          <option value="">Select a user</option>
+        </select>
+        <label for="modalTaskInput">Task:</label>
+        <input type="text" id="modalTaskInput" placeholder="Enter a task">
+        <button id="modalTaskButton" onclick="saveTask()">Save</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+
+
+</body>
+
+</html>
